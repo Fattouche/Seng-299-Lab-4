@@ -52,6 +52,12 @@ function makeLine(x1, y1, x2, y2, color, stroke) {
 */ 
 function makeRectangle(x, y, w, h, c){
    var rect = document.createElementNS(SVGNameSpace, "rect"); 
+   rect.setAttribute("x",x);
+   rect.setAttribute("y",y);
+   rect.setAttribute("width",w);
+   rect.setAttribute("height",y);
+   rect.style.fill=c;
+   
 
    // TODO: Implement me. Checkout docs at: http://www.w3schools.com/svg/svg_rect.asp
 
