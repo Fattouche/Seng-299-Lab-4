@@ -55,7 +55,7 @@ function makeRectangle(x, y, w, h, c){
    rect.setAttribute("x",x);
    rect.setAttribute("y",y);
    rect.setAttribute("width",w);
-   rect.setAttribute("height",y);
+   rect.setAttribute("height",h);
    rect.style.fill=c;
    
 
