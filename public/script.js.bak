@@ -43,31 +43,35 @@ function drawBoard(state){
     // we can manipulate it via calls to the jQuery API. 
     var svg = $(makeSVG(W, H));
 	var arr = state.board;
-	var size = state.size;
+    var size = state.size;
     // TODO: Implement board drawing. 
     
     //  You will want to append elements to the 
     //  svg variable using the svg.append(....) 
     //  method. 
-	var lines=W/(size-1);
-	var temp=(W/(size-1));
-	var i=1;
-	while(i<size){
-		svg.append(makeLine(0,temp,W, temp, "black","rgb(255,0,0)"));
-		svg.append(makeLine(temp,0,temp,W, "black","rgb(255,0,0)"));
-		temp=temp+lines;
-		i++;
-	}
-	for(i=0;i<arr.length;i++){
-		for(j=0;j<arr.length;j++){
-			if(arr[i][j]==1){
-				svg.append(makeCircle(lines*i, lines*j, 10, "blue"));
-			}
-			if(arr[i][j]==2){
-				svg.append(makeCircle(lines*i, lines*j, 10, "red"));
-			}
-		}
-	}
+	var lines = (W/(size+1));
+    var space = lines;
+    svg.append(makeRectangle(lines, lines, W-2*lines, W-2*lines, 'lavender'));
+    var i=1;
+    while(i<=size){
+        svg.append(makeLine(lines, space, W-lines, space, 'black', 'rgb(255,0,0)'));
+        svg.append(makeLine(space, lines, space, W-lines, 'black', 'rgb(255,0,0'));
+        space += lines;
+        i++
+    }
+
+    for(var i=0; i<arr.length; i++){
+        var len = arr[i].length;
+        for(var j=0; j<len; j++){
+            if(arr[i][j] == 1){
+                svg.append(makeCircle(lines + lines*i, (lines+lines*j), 15, 'blue'));
+            }
+            if(arr[i][j] == 2){
+                 svg.append(makeCircle(lines+lines*i, lines+lines*j, 15, 'red'));
+            }
+
+        }
+    }
 	
     // append the svg object to the canvas object.
     canvas.append(svg);
